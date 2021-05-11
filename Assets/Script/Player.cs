@@ -215,6 +215,7 @@ public class Player : MonoBehaviour
     //攻击判定
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Parameter parameter = new Parameter();
         if (other.CompareTag("Enemy"))
         {
             if (attackType == "Light")
@@ -222,21 +223,25 @@ public class Player : MonoBehaviour
                 myInpulse.GenerateImpulse();
                 AttackSense.Instance.HitPause(lightPause);
                 hitAudio.Play();
+                other.GetComponent<FSM>().parameter.getHit = true;
+                other.GetComponent<FSM>().parameter.health -= 10;
             }
             else if (attackType == "Heavy")
             {
                 myInpulse.GenerateImpulse();
                 AttackSense.Instance.HitPause(heavyPause);
                 hitAudio.Play();
+                other.GetComponent<FSM>().parameter.getHit = true;
+                other.GetComponent<FSM>().parameter.health -= 30;
             }
             //敌人受伤
             if (transform.localScale.x > 0)
             {
-                other.GetComponent<Enemy>().GetHit(Vector2.right);
+                other.GetComponent<FSM>().GetHit(Vector2.right);
             }
             else if (transform.localScale.x < 0)
             {
-                other.GetComponent<Enemy>().GetHit(Vector2.left);
+                other.GetComponent<FSM>().GetHit(Vector2.left);
             }
         }
     }

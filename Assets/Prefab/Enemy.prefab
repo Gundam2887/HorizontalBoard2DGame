@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 6822209747907054668}
   - component: {fileID: 6822209747907054671}
   - component: {fileID: 1571211738885891327}
+  - component: {fileID: 1866632590}
   m_Layer: 10
   m_Name: Sandbag
   m_TagString: Enemy
@@ -351,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parameter:
-    health: 2
+    health: 100
     moveSpeed: 5
     chaseSpeed: 8
     idleTime: 1
@@ -369,6 +370,24 @@ MonoBehaviour:
     attackArea: 1.17
     animator: {fileID: 6822209747907054664}
     getHit: 0
+    hitSpeed: 3
+    direction: {x: 0, y: 0}
+    rb: {fileID: 6822209747907054668}
+    hitAnimator: {fileID: 6822209748200302322}
+--- !u!114 &1866632590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6822209747907054667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a61327693bd233d4ab8d02e696319ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSpeed: 3
+  rb: {fileID: 6822209747907054668}
 --- !u!1 &6822209748200302287
 GameObject:
   m_ObjectHideFlags: 0

@@ -224,12 +224,15 @@ public class HitState : IState
     public void OnEnter()
     {
         parameter.animator.Play("Hit");
-        parameter.health--;
+
     }
 
     public void OnUpdate()
     {
+        
         info = parameter.animator.GetCurrentAnimatorStateInfo(0);
+
+        parameter.rb.velocity = parameter.direction * 3;
 
         if (parameter.health <= 0)
         {
@@ -261,7 +264,7 @@ public class DeathState : IState
     }
     public void OnEnter()
     {
-        parameter.animator.Play("Dead");
+        parameter.animator.Play("Die");
     }
 
     public void OnUpdate()

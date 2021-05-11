@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    public void GetHit(Vector2 direction)
+    public void AAGetHit(Vector2 direction)
     {
         transform.localScale = new Vector3(direction.x * 9, 9, 9);
         isHit = true;
