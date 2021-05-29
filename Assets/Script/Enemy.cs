@@ -46,6 +46,4 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("Hit");
         hitAnimator.SetTrigger("Hit");
     }
- 
- 
 }

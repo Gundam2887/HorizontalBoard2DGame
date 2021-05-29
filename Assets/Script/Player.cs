@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
     //音效
     public AudioSource runAudio,jumpAudio,atkAudio,toGroundAudio,hitAudio;
 
-    public bool getHit = false;
+    public bool getHit;
 
     private AnimatorStateInfo info;
 
@@ -75,17 +75,8 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpforce);
             anim.SetBool("Jumping", true);
         }
-        Attack();
         GetHit();
-
-        info = anim.GetCurrentAnimatorStateInfo(0);
-        if (getHit)
-        {
-            if (info.normalizedTime >= 0.1f)
-            {
-                getHit = false;
-            }
-        }
+        Attack();
     }
 
     void FixedUpdate()
@@ -94,7 +85,7 @@ public class Player : MonoBehaviour
         isGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, ground);
         SwitchAnim();
         Jump();
-        GroundMove();      
+        GroundMove();
     }
 
     //移动
@@ -258,17 +249,20 @@ public class Player : MonoBehaviour
         }
     }
 
-     void GetHit()
+    void GetHit()
     {
-        if (getHit == true)
+        info = anim.GetCurrentAnimatorStateInfo(0);
+        if (getHit)
         {
             anim.SetTrigger("IsHit");
+            Debug.Log(getHit);
+            if(info.normalizedTime >= 0.01f)
+            {
+                getHit = false;
+                Debug.Log(getHit);
+            }
         }
-    }
-
-    public void GetHitOver()
-    {
-        getHit = false;
+       
     }
 
     //动画切换

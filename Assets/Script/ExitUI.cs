@@ -39,10 +39,12 @@ public class ExitUI : MonoBehaviour
         }
         if (LifeBar.lifeCurrent <= 0)
         {
+            Time.timeScale = 0;
             dieUI.SetActive(true);
         }
         else
         {
+            Time.timeScale = 1;
             dieUI.SetActive(false);
         }
         lockState();
